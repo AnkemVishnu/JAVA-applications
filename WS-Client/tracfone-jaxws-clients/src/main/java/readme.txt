@@ -1,1 +1,1 @@
-here the files will be generated
+In this folder location the files will be generated
