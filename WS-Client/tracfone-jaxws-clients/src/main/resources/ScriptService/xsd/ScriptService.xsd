@@ -1,0 +1,67 @@
+<schema targetNamespace="http://b2b.tracfone.com/ScriptService"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://b2b.tracfone.com/ScriptService" xmlns:xsd1="http://www.tracfone.com/CommonTypes">
+	<import schemaLocation="TFCommonTypes.xsd"
+		namespace="http://www.tracfone.com/CommonTypes" />
+	<element name="getScriptRequest" type="tns:GetScriptRequestType" />
+	<element name="getScriptResponse" type="tns:GetScriptResponseType" />
+
+	<complexType name="GetScriptRequestType">
+		<complexContent>
+			<extension base="xsd1:BaseRequestType">
+				<sequence minOccurs="1" maxOccurs="1">					
+					<element name="scriptID" type="string" minOccurs="1"
+						maxOccurs="unbounded" />
+					<element name="script" type="string" minOccurs="0"
+						maxOccurs="1" />
+					<element name="carrierID" type="string" minOccurs="0"
+						maxOccurs="1" />
+					<element name="scriptType" type="string" minOccurs="0"
+						maxOccurs="1" />
+					<element name="generateLinks" type="boolean" minOccurs="0"
+						maxOccurs="1" />
+					<element name="applicationName" type="string" minOccurs="0"
+						maxOccurs="1" />
+					<element name="promotionGroup" type="string" minOccurs="0"
+						maxOccurs="1" />
+					<element name="partClass" type="string" minOccurs="0"
+						maxOccurs="1" />
+					<element name="technology" type="xsd1:TechnologyType"
+						minOccurs="0" maxOccurs="1" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="GetScriptResponseType">
+		<complexContent>
+			<extension base="xsd1:BaseResponseType">
+				<sequence minOccurs="1" maxOccurs="1">
+					<element name="scripts" type="tns:ScriptsType" minOccurs="0"
+						maxOccurs="1" />
+					<element name="cacheTTL" type="string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="server" type="boolean" minOccurs="1"
+						maxOccurs="1" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="ScriptsType">
+		<sequence minOccurs="1" maxOccurs="1">
+			<element name="script" type="tns:ScriptType" minOccurs="0"
+				maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+
+	<complexType name="ScriptType">
+		<sequence minOccurs="1" maxOccurs="1">
+			<element name="scriptID" type="string" minOccurs="1"
+				maxOccurs="1" />
+			<element name="scriptText" type="string" minOccurs="1"
+				maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+</schema>

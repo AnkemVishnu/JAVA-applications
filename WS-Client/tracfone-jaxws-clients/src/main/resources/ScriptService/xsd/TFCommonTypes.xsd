@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.tracfone.com/CommonTypes" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.tracfone.com/CommonTypes" xmlns:Q1="http://www.tracfone.com/RuntimeFault">
+
+	<xsd:import schemaLocation="RuntimeFault.xsd" namespace="http://www.tracfone.com/RuntimeFault" />
+	<xsd:simpleType name="ZipCodeType">
+		<xsd:restriction base="string">
+			<xsd:length value="5" />
+			<xsd:whiteSpace value="collapse" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="TechnologyType">
+		<xsd:restriction base="string">
+			<xsd:enumeration value="GSM" />
+			<xsd:enumeration value="CDMA" />
+			<xsd:enumeration value="ALL"></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+
+	<xsd:complexType name="ZipCodeCoverageType">
+		<xsd:sequence>
+			<xsd:element name="zipcode" type="tns:ZipCodeType"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="technologyCovered" type="tns:TechnologyType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+
+
+
+	<xsd:simpleType name="EmailType">
+		<xsd:restriction base="string">
+			<xsd:minLength value="3" />
+			<xsd:whiteSpace value="collapse" />
+			<xsd:pattern value=".+@.+" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="PersonNameType">
+		<xsd:sequence minOccurs="1" maxOccurs="1">
+			<xsd:element name="firstName" type="string" minOccurs="1"
+				maxOccurs="1" />
+			<xsd:element name="lastName" type="string" minOccurs="1"
+				maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="StreetAddressType">
+		<xsd:sequence minOccurs="1" maxOccurs="1">
+			<xsd:element name="line1" type="string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="line2" type="string" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="StateType">
+		<xsd:restriction base="string">
+			<xsd:enumeration value="AL" />
+			<xsd:enumeration value="AK" />
+			<xsd:enumeration value="AZ" />
+			<xsd:enumeration value="AR" />
+			<xsd:enumeration value="CA" />
+			<xsd:enumeration value="CO" />
+			<xsd:enumeration value="CT" />
+			<xsd:enumeration value="DE" />
+			<xsd:enumeration value="DC" />
+			<xsd:enumeration value="FL" />
+			<xsd:enumeration value="GA" />
+			<xsd:enumeration value="HI" />
+			<xsd:enumeration value="ID" />
+			<xsd:enumeration value="IL" />
+			<xsd:enumeration value="IN" />
+			<xsd:enumeration value="IA" />
+			<xsd:enumeration value="KS" />
+			<xsd:enumeration value="KY" />
+			<xsd:enumeration value="LA" />
+			<xsd:enumeration value="ME" />
+			<xsd:enumeration value="MD" />
+			<xsd:enumeration value="MA" />
+			<xsd:enumeration value="MI" />
+			<xsd:enumeration value="MN" />
+			<xsd:enumeration value="MS" />
+			<xsd:enumeration value="MO" />
+			<xsd:enumeration value="MT" />
+			<xsd:enumeration value="NE" />
+			<xsd:enumeration value="NV" />
+			<xsd:enumeration value="NH" />
+			<xsd:enumeration value="NJ" />
+			<xsd:enumeration value="NM" />
+			<xsd:enumeration value="NY" />
+			<xsd:enumeration value="NC" />
+			<xsd:enumeration value="ND" />
+			<xsd:enumeration value="OH" />
+			<xsd:enumeration value="OK" />
+			<xsd:enumeration value="OR" />
+			<xsd:enumeration value="PA" />
+			<xsd:enumeration value="PR" />			
+			<xsd:enumeration value="RI" />
+			<xsd:enumeration value="SC" />
+			<xsd:enumeration value="SD" />
+			<xsd:enumeration value="TN" />
+			<xsd:enumeration value="TX" />
+			<xsd:enumeration value="UT" />
+			<xsd:enumeration value="VT" />
+			<xsd:enumeration value="VA" />
+			<xsd:enumeration value="WA" />
+			<xsd:enumeration value="WV" />
+			<xsd:enumeration value="WI" />
+			<xsd:enumeration value="WY" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="CountryType">
+		<xsd:restriction base="string">
+			<xsd:enumeration value="USA"/>
+			<xsd:enumeration value="CAN"/>
+			<xsd:enumeration value="MEX"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="ServiceProviderCarrierNameType">
+		<xsd:restriction base="string">
+			<xsd:enumeration value="TRACFONE"/>
+			<xsd:enumeration value="NET10"/>
+			<xsd:enumeration value="STRAIGHT_TALK"/>
+			<xsd:enumeration value="TELCEL"/>
+			<xsd:enumeration value="SIMPLE_MOBILE"/>
+			<xsd:enumeration value="VERIZON"/>
+			<xsd:enumeration value="OTHER"/>
+			<xsd:enumeration value="CONSUMER CELLULAR"/>
+			<xsd:enumeration value="US CELLULAR"/>
+			<xsd:enumeration value="TMOBILE"/>
+			<xsd:enumeration value="BOOST MOBILE"/>
+			<xsd:enumeration value="ALLTEL"/>
+			<xsd:enumeration value="CRICKET"/>
+			<xsd:enumeration value="QWEST"/>
+			<xsd:enumeration value="METRO PCS"/>
+			<xsd:enumeration value="AT&amp;T/CINGULAR"/>
+			<xsd:enumeration value="SPRINT"/>
+			<xsd:enumeration value="VIRGIN MOBILE"/>
+			<xsd:enumeration value="NEXTEL"/>
+			<xsd:enumeration value="EDGE WIRELESS"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+
+
+
+
+
+
+	<xsd:complexType name="AddressType">
+		<xsd:sequence minOccurs="1" maxOccurs="1">
+			<xsd:element name="streetAddress"
+				type="tns:StreetAddressType" minOccurs="1" maxOccurs="1" />
+
+			<xsd:element name="city" type="string" minOccurs="1"
+				maxOccurs="1" />
+
+			<xsd:element name="state" type="tns:StateType" minOccurs="1"
+				maxOccurs="1" />
+
+			<xsd:element name="zipcode" type="tns:ZipCodeType"
+				minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="ClientIdType">
+		<xsd:restriction base="string" />
+	</xsd:simpleType>
+
+	<xsd:simpleType name="TransactionTokenType">
+		<xsd:restriction base="string" />
+	</xsd:simpleType>
+
+	<xsd:complexType name="RequestorIdType">
+		<xsd:sequence minOccurs="1" maxOccurs="1">
+			<xsd:element name="clientTransactionId" type="tns:TransactionTokenType"
+				minOccurs="1" maxOccurs="1" />
+
+			<xsd:element name="clientId" type="tns:ClientIdType"
+				minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="BaseRequestResponseType">
+		<xsd:sequence minOccurs="1" maxOccurs="1">
+			<xsd:element name="requestToken" type="tns:RequestorIdType"
+				minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="BaseResponseType">
+		<xsd:complexContent>
+			<xsd:extension base="tns:BaseRequestResponseType">
+				<xsd:sequence minOccurs="0" maxOccurs="1">
+					<xsd:element name="result" type="tns:ResponseResultType" minOccurs="1" maxOccurs="1"/>
+					<xsd:element name="serverTransactionId" type="tns:TransactionTokenType" minOccurs="1" maxOccurs="1">
+					</xsd:element>
+					<xsd:element ref="Q1:RuntimeFaultMessage" minOccurs="0" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+
+	<xsd:simpleType name="OrderIdType">
+		<xsd:restriction base="string" />
+	</xsd:simpleType>
+
+	<xsd:simpleType name="LanguageType">
+        <xsd:annotation>
+        	<xsd:documentation>The enumeration values follow the ISO 639.2 coding standard for language codes</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+			<xsd:enumeration value="ENG"></xsd:enumeration>
+			<xsd:enumeration value="SPA"></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="TracfoneBrandType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="NET10"></xsd:enumeration>
+			<xsd:enumeration value="STRAIGHT_TALK"></xsd:enumeration>
+			<xsd:enumeration value="TRACFONE"></xsd:enumeration>
+			<xsd:enumeration value="TELCEL"></xsd:enumeration>
+			<xsd:enumeration value="ANY"></xsd:enumeration>
+			<xsd:enumeration value="SIMPLE_MOBILE"></xsd:enumeration>
+			<xsd:enumeration value="SLFRIENDS"></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+
+	<xsd:simpleType name="ObjectIdType">
+		<xsd:restriction base="xsd:string"></xsd:restriction>
+	</xsd:simpleType>
+
+
+	<xsd:simpleType name="SourceSystemType">
+		<xsd:restriction base="xsd:string">
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="BaseRequestType">
+		<xsd:complexContent>
+			<xsd:extension base="tns:BaseRequestResponseType">
+				<xsd:sequence>
+					<xsd:element name="brandName"
+						type="tns:TracfoneBrandType" minOccurs="1" maxOccurs="1">
+					</xsd:element>
+					<xsd:element name="sourceSystem"
+						type="tns:SourceSystemType" minOccurs="1" maxOccurs="1">
+					</xsd:element>
+					<xsd:element name="language" type="tns:LanguageType" minOccurs="0" maxOccurs="1"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="ResponseResultType">
+		<xsd:sequence>
+			<xsd:element name="code" type="xsd:string"></xsd:element>
+			<xsd:element name="message" type="xsd:string"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="AccountNumberType">
+		<xsd:restriction base="xsd:string"></xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="ExpirationDateType">
+		<xsd:sequence>
+			<xsd:element name="expirationYear" minOccurs="1"
+				maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:pattern value="[\d]{4}"></xsd:pattern>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="expirationMonth" minOccurs="1"
+				maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:pattern value="[\d]{2}"></xsd:pattern>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="expirationDay" minOccurs="0"
+				maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:pattern value="[\d]{2}"></xsd:pattern>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="KeyValuePairType">
+		<xsd:sequence>
+			<xsd:element name="keyName" type="xsd:string"></xsd:element>
+			<xsd:element name="keyValue" type="xsd:string"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="FullPersonNameType">
+		<xsd:complexContent>
+			<xsd:extension base="tns:PersonNameType">
+				<xsd:sequence>
+					<xsd:element name="maidenName" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="FullAddressType">
+		<xsd:complexContent>
+			<xsd:extension base="tns:AddressType">
+				<xsd:sequence>
+					<xsd:element name="country" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="TaxesType">
+		<xsd:sequence>
+			<xsd:element name="rcrfAmount" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="rcrfRate" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="combsTaxAmount" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="combsTaxRate" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="e911Amount" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="e911Rate" type="xsd:string"/>
+            <xsd:element name="e911RateAmount" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="e911FlatAmount" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="usfAmount" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="usfRate" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="totalTaxAmount" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="discountAmount" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="totalCharges" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="amount" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+	</xsd:complexType>
+	
+	<complexType name="QueryStringType">
+    	<sequence>
+    		<element name="attrib" type="tns:KeyValuePairType" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="queryString" type="tns:QueryStringType"></element>
+	
+
+
+    <xsd:simpleType name="HandsetModelType">
+    	<xsd:restriction base="xsd:string"></xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="URLType">
+    	<xsd:restriction base="xsd:string"></xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="MapIdType">
+    	<xsd:restriction base="xsd:string"></xsd:restriction>
+    </xsd:simpleType>
+  <xsd:simpleType name="PartNumberType">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:complexType name="PartNumberListType">
+    <xsd:sequence>
+      <xsd:element name="partNumber" type="tns:PartNumberType" minOccurs="1" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <!-- Reinaldo -->
+  <xsd:simpleType name="PinCardType">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:complexType name="PinCardListType">
+    <xsd:sequence>
+      <xsd:element name="pinCards" type="tns:PinCardType" minOccurs="1" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  
+  
+  <xsd:simpleType name="PromoCodeType">
+    <xsd:restriction base="xsd:string"/>  </xsd:simpleType>
+    <xsd:complexType name="HandsetModelListType">
+    	<xsd:sequence>
+    		<xsd:element name="handsetModel" type="tns:HandsetModelType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="yesNoType">
+    	<xsd:restriction base="xsd:string">
+    		<xsd:enumeration value="yes"></xsd:enumeration>
+    		<xsd:enumeration value="no"></xsd:enumeration>
+    	</xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="AddressFormatTypeType">
+    	<xsd:restriction base="xsd:string"></xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="AddressFormatType">
+    	<xsd:restriction base="xsd:string"></xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="AddressFormatListType">
+    	<xsd:sequence>
+    		<xsd:element name="addressFormat" type="tns:AddressFormatType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+
+
+
+
+  <xsd:complexType name="PromoCodeListType">
+    <xsd:sequence>
+      <xsd:element name="promoCode" type="tns:PromoCodeType" minOccurs="1" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="StringFloatKeyValuePairType">
+    <xsd:sequence>
+      <xsd:element name="keyName" type="xsd:string"/>
+      <xsd:element name="keyValue" type="xsd:double"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="BaseSecureRequestType">
+    <xsd:complexContent>
+      <xsd:extension base="tns:BaseRequestType">
+        <xsd:sequence>
+          <xsd:element name="remoteIpAddress" type="xsd:string" minOccurs="1"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>  
+	
+  <xsd:simpleType name="IPAddressType">
+  	<xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  
+  <xsd:complexType name="TicketType">
+	  	<xsd:sequence>
+	  		<xsd:element name="caseId" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="caseType" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="caseTitle" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="caseStatus" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="caseEsn" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="caseMin" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="caseIssue" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="casePartType" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="caseObjid" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="caseCondition" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="caseTracking" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="caseDeliverDate" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="caseNotes" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="caseOldNotes" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="caseResolution" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="caseCreateDate" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="customerObjid" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="customerFirstName" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="customerLastName" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="customerPrimaryAddress1" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="customerPrimaryAddress2" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="customerPrimaryCity" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="customerPrimaryState" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="customerPrimaryZipCode" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="customerHomePhone" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="contactEmail" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="customerSsn" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="customerShippingFirstName" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="customerShippingLastName" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="customerShippingHomePhone" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="customerShippingAddress1" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="customerShippingAddress2" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="customerShippingCity" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="customerSippingState" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="customerShippingZipCode" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="customerShippingCountry" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="latestTracking" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  		<xsd:element name="pointOfContact" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+	  	</xsd:sequence>
+  </xsd:complexType>
+
+    <complexType name="FISType">
+    	<sequence>
+    		<element name="ProxyNumber" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="PersonId" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="DANumber" type="string" minOccurs="0" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="VMBCType">
+    	<sequence>
+    		<element name="RafNumber" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    	</sequence>
+    </complexType>
+	
+
+
+
+
+
+
+    <complexType name="KobieType">
+    	<sequence>
+    		<element name="AccountId" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="AccountNumber" type="string" minOccurs="0" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+	
+    <complexType name="PaymentMethodType">
+    	<choice>
+    		<element name="check" minOccurs="1" maxOccurs="1">
+    			<simpleType>
+    				<restriction base="string">
+    					<maxLength value="4"></maxLength>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    		<element name="secureCash" type="tns:SecureCheckType" minOccurs="1" maxOccurs="1"></element>
+    	</choice>
+    </complexType>
+
+    <complexType name="SecureCheckType">
+    	<sequence>
+    		<element name="ssn" type="string"></element>
+    	</sequence>
+    </complexType>
+	
+	<xsd:simpleType name="PhoneUpgradeValidationType">
+		<xsd:restriction base="string">
+			<xsd:enumeration value="FROM"/>
+			<xsd:enumeration value="TO"/>
+			<xsd:enumeration value="MINCHANGE"/>
+
+		</xsd:restriction>
+	</xsd:simpleType>
+<!-- 
+	static final String SCENARIO_SWAP_SIMM_UPGRADE 				= "1";
+	static final String SCENARIO_PIN_REQUIRED      				= "2";
+	static final String SCENARIO_NO_SPECIAL_TREATMENT 			= "0";
+	static final String SCENARIO_TIME_TANK_BALANCE_NEEDED 		= "3";
+	static final String SCENARIO_REQUIRES_TRANSFER 				= "4";
+	static final String SCENARIO_UNKNOWN           				= "-1";
+ -->
+	<xsd:simpleType name="PhoneUpgradeType">
+		<xsd:restriction base="string">
+			<xsd:enumeration value="1"/>
+			<xsd:enumeration value="2"/>
+			<xsd:enumeration value="0"/>
+			<xsd:enumeration value="3"/>
+			<xsd:enumeration value="4"/>
+			<xsd:enumeration value="-1"/>
+
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="PhoneUpgradeDescriptionType">
+		<xsd:restriction base="string">
+			<xsd:enumeration value="SCENARIO_SWAP_SIMM_UPGRADE"/>
+			<xsd:enumeration value="SCENARIO_PIN_REQUIRED"/>
+			<xsd:enumeration value="SCENARIO_NO_SPECIAL_TREATMENT"/>
+			<xsd:enumeration value="SCENARIO_TIME_TANK_BALANCE_NEEDED"/>
+			<xsd:enumeration value="SCENARIO_REQUIRES_TRANSFER"/>
+			<xsd:enumeration value="SCENARIO_UNKNOWN"/>
+
+		</xsd:restriction>
+	</xsd:simpleType>
+<xsd:simpleType name="ConfirmationIdType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>  
+
+	<xsd:complexType name="EsnKeyValuePairType">
+		<xsd:sequence>
+			<xsd:element name="keyName" type="tns:EsnAttributesType" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="keyValue" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+
+
+    <xsd:complexType name="KeyValueStatusType">
+    	<xsd:sequence>
+    		<xsd:element name="keyValue" type="tns:EsnKeyValuePairType" minOccurs="1" maxOccurs="1"></xsd:element>
+    		<xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+    
+	<xsd:simpleType name="EsnAttributesType">
+		<xsd:restriction base="string">
+			<xsd:enumeration value="MIN"/>
+			<xsd:enumeration value="NICKNAME"/>
+			<xsd:enumeration value="BRAND"/>
+			<xsd:enumeration value="TECHNOLOGY"/>
+			<xsd:enumeration value="SIM"/>
+			<xsd:enumeration value="EMAIL"/>
+			<xsd:enumeration value="ISB2B"/>
+			<xsd:enumeration value="STATUS"/>
+			<xsd:enumeration value="ISAUTOREFILL"/>
+			<xsd:enumeration value="ISUNLIMITED"/>
+			<xsd:enumeration value="ENDOFSERVICEDATE"/>
+			<xsd:enumeration value="FORECASTDATE"/>
+			<xsd:enumeration value="HASREGEDPAYMENTSOURCES"/>
+			<xsd:enumeration value="QUEUESIZE"/>
+			<xsd:enumeration value="SERVICEPLANID"/>
+			<xsd:enumeration value="CARRIER"/>
+			<xsd:enumeration value="DEVICE_PARTCLASS"/>
+			<xsd:enumeration value="DEVICE_PARTNUMBER"/>
+			<xsd:enumeration value="BILLING_PARTNUMBER"/>
+			<xsd:enumeration value="SERVICE_PARTNUMBER"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+    
+	<xsd:simpleType name="EsnBusinessType">
+		<xsd:restriction base="string">
+			<xsd:enumeration value="B2B"/>
+			<xsd:enumeration value="B2C"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TaxExemptionType">
+		<xsd:restriction base="string">
+			<xsd:enumeration value="TAXABLE"/>
+			<xsd:enumeration value="SALES_EXEMPT"/>
+			<xsd:enumeration value="SALES_E911_EXEMPT"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+</xsd:schema>

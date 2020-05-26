@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.tracfone.com/RuntimeFault"
+	xmlns:tns="http://www.tracfone.com/RuntimeFault" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xsd:element name="RuntimeFaultMessage" >
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="code" type="xsd:string" />
+				<xsd:element name="subcode" type="string"></xsd:element>
+				<xsd:element name="isRetriable" type="boolean"></xsd:element>
+				<xsd:element name="summary" type="xsd:string" />
+				<xsd:element name="detail">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="message"
+								type="xsd:string" />
+							<xsd:element name="originalPayload"
+								type="xsd:anyType" />
+							<xsd:element name="coreFault"
+								type="xsd:anyType" />
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="causedBy" type="xsd:anyType"></xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

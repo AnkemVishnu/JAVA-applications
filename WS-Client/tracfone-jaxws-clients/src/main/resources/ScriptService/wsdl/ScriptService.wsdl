@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WL5G3N1:definitions name="ScriptService" targetNamespace="http://b2b.tracfone.com/ScriptService/" xmlns:WL5G3N0="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:WL5G3N1="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N2="http://b2b.tracfone.com/ScriptService" xmlns:WL5G3N3="http://b2b.tracfone.com/ScriptService/" xmlns:WL5G3N4="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+  <wsp:UsingPolicy WL5G3N1:Required="true"/>
+  <wsp:Policy WL5G3N0:Id="Auth.xml">
+    <wssp:Identity xmlns:wssp="http://www.bea.com/wls90/security/policy">
+      <wssp:SupportedTokens>
+        <wssp:SecurityToken TokenType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#UsernameToken">
+          <wssp:UsePassword Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText"/>
+        </wssp:SecurityToken>
+      </wssp:SupportedTokens>
+    </wssp:Identity>
+  </wsp:Policy>
+  <WL5G3N1:types>
+    <xsd:schema xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://b2b.tracfone.com/ScriptService" xmlns:WL5G3N2="http://b2b.tracfone.com/ScriptService/" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://b2b.tracfone.com/ScriptService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="http://b2b.tracfone.com/ScriptService">
+      <xsd:import namespace="http://b2b.tracfone.com/ScriptService" schemaLocation="../xsd/ScriptService.xsd">
+			</xsd:import>
+    </xsd:schema>
+  </WL5G3N1:types>
+  <WL5G3N1:message name="getScriptRequest">
+    <WL5G3N1:part element="WL5G3N2:getScriptRequest" name="parameters"/>
+  </WL5G3N1:message>
+  <WL5G3N1:message name="getScriptResponse">
+    <WL5G3N1:part element="WL5G3N2:getScriptResponse" name="parameters"/>
+  </WL5G3N1:message>
+  <WL5G3N1:portType name="ScriptService">
+    <WL5G3N1:operation name="getScript">
+      <WL5G3N1:input message="WL5G3N3:getScriptRequest"/>
+      <WL5G3N1:output message="WL5G3N3:getScriptResponse"/>
+    </WL5G3N1:operation>
+  </WL5G3N1:portType>
+  <WL5G3N1:binding name="ScriptServiceSOAP" type="WL5G3N3:ScriptService">
+    <WL5G3N4:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <WL5G3N1:operation name="getScript">
+      <WL5G3N4:operation soapAction="http://b2b.tracfone.com/ScriptService/geScript"/>
+      <WL5G3N1:input>
+        <wsp:Policy>
+          <wsp:PolicyReference URI="#Auth.xml"/>
+        </wsp:Policy>
+        <WL5G3N4:body use="literal"/>
+      </WL5G3N1:input>
+      <WL5G3N1:output>
+        <WL5G3N4:body use="literal"/>
+      </WL5G3N1:output>
+    </WL5G3N1:operation>
+  </WL5G3N1:binding>
+  <WL5G3N1:service name="ScriptService">
+    <WL5G3N1:port binding="WL5G3N3:ScriptServiceSOAP" name="ScriptServiceSOAP">
+      <WL5G3N4:address location="http://PC181240.cts.com:6001/B2B/ScriptService"/>
+    </WL5G3N1:port>
+  </WL5G3N1:service>
+</WL5G3N1:definitions>
